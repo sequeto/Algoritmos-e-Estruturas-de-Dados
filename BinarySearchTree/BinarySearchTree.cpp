@@ -13,7 +13,20 @@ BinarySearchTree::BinarySearchTree(){
 // Destrutor
 
 BinarySearchTree::~BinarySearchTree(){
-    
+    this->root = free(this->root);
+}
+
+// ------------------------------------------------------------
+// Realiza Liberação de Um nó
+TNode* BinarySearchTree::free(TNode* p){
+    if(p != NULL){
+        p->setLeft(free(p->getLeft()));
+        p->setRight(free(p->getRight()));
+        delete p;
+        p == NULL;
+    }
+
+    return NULL;
 }
 
 // -----------------------------------------------------------
@@ -93,4 +106,31 @@ TNode* BinarySearchTree::auxInsert(TNode* p, int value){
 // Remove o elemento na árvore com o valor definido
 void BinarySearchTree::remove(int value){
     // Waiting...
+}
+
+// -----------------------------------------------------------
+// Retorna a altura da árvore
+int BinarySearchTree::height(){
+    return auxHeight(this->root);
+}
+
+// -----------------------------------------------------------
+int BinarySearchTree::auxHeight(TNode* p){
+    int hl, hr; // Armazena a altura das subarvore a esquerda(hl) e direita(hr)
+    if(p == NULL){
+        return -1;
+    }
+
+    else{
+        hl = auxHeight(p->getLeft());
+        hr = auxHeight(p->getRight());
+
+        if(hl > hr){
+            return 1 + hl;
+        }
+
+        else{
+            return 1 + hr;
+        }
+    }
 }
