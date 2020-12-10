@@ -24,7 +24,7 @@ Stack::~Stack(){
 int Stack::getTop(){
     if(this->top == NULL){
         cout << "Pilha está vazia" << endl;
-        exit(1);
+        return -1;
     }
 
     return this->top->getInfo();
@@ -44,7 +44,7 @@ void Stack::push(int value){
 int Stack::pop(){
     if(this->top == NULL){
         cout << "Pilha está vazia" << endl;
-        exit(1);
+        return -1;
     }
 
     else{

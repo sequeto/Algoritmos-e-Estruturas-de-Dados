@@ -26,7 +26,7 @@ Queue::~Queue(){
 int Queue::getFirst(){
     if(this->first == NULL){
         cout << "Fila Vazia" << endl;
-        exit(1);
+        return -1;
     }
 
     else{
@@ -70,7 +70,7 @@ int Queue::dequeue(){
     }
 
     cout << "A Fila está Vazia" << endl;
-    exit(1);
+    return -1;
 }
 
 //----------------------------------
